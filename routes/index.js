@@ -11,7 +11,7 @@ router.use(auth);
 router.use('/users', require('./users'));
 router.use('/movies', require('./movies'));
 
-router.get('/*', () => {
+router.all('/*', () => {
   throw new NotFound(notFoundError);
 });
 

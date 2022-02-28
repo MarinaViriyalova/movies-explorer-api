@@ -34,7 +34,7 @@ const movieSchema = new mongoose.Schema({
       message: 'В поле "image" должен быть указан валидный url-адрес',
     },
   },
-  trailer: {
+  trailerLink: {
     type: String,
     required: [true, 'Поле "trailer" должно быть заполнено'],
     validate: {

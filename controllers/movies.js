@@ -3,7 +3,9 @@ const BadRequest = require('../errors/BadRequest');
 const NotFound = require('../errors/NotFound');
 const Forbidden = require('../errors/Forbidden');
 const {
-  validationError, notFoundMovieError, forbiddenError,
+  validationError,
+  notFoundMovieError,
+  forbiddenError,
 } = require('../constants/index');
 
 module.exports.getMovies = (req, res, next) => {
@@ -21,7 +23,7 @@ module.exports.createMovie = (req, res, next) => {
     year,
     description,
     image,
-    trailer,
+    trailerLink,
     thumbnail,
     nameRU,
     nameEN,
@@ -35,7 +37,7 @@ module.exports.createMovie = (req, res, next) => {
     year,
     description,
     image,
-    trailer,
+    trailerLink,
     thumbnail,
     nameRU,
     nameEN,

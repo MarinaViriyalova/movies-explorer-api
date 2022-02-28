@@ -7,7 +7,7 @@ const User = require('../models/user');
 const { JWT_SECRET, NODE_ENV } = require('../config');
 const NotFound = require('../errors/NotFound');
 const {
-  validationError, conflictEmailError, unauthorizedError, notFoundUserError,
+  validationError, conflictEmailError, wrongCredentials, notFoundUserError,
 } = require('../constants/index');
 
 module.exports.createUser = (req, res, next) => {
@@ -18,12 +18,8 @@ module.exports.createUser = (req, res, next) => {
     .then((hash) => User.create({
       name, password: hash, email,
     }))
-    .then((user) => {
-      const token = jwt.sign(
-        { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-key', { expiresIn: '7d' },
-      );
-      res.send({ token });
+    .then(() => {
+      res.send({});
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -42,12 +38,13 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-key', { expiresIn: '7d' },
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-key',
+        { expiresIn: '7d' },
       );
       res.send({ token });
     })
     .catch(() => {
-      throw new Unauthorized(unauthorizedError);
+      throw new Unauthorized(wrongCredentials);
     })
     .catch(next);
 };
