@@ -1,3 +1,3 @@
 # movies-explorer-api
 
-link to backend part: viriyalova-diploma.nomoredomains.work 
+link to backend part: api.viriyalova-diploma.nomoredomains.work 
