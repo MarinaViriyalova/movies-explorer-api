@@ -3,5 +3,6 @@ module.exports.validationError = 'Переданы некорректные да
 module.exports.notFoundMovieError = 'Фильм не найден';
 module.exports.notFoundUserError = 'Пользователь не найден';
 module.exports.unauthorizedError = 'Необходимо авторизоваться';
+module.exports.wrongCredentials = 'Неправильная почта или пароль';
 module.exports.forbiddenError = 'Фильм может удалить только тот пользователь, кто его сохранил';
 module.exports.notFoundError = 'Страница не найдена';

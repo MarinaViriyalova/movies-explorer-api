@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const { errors } = require('celebrate');
 const { limiter } = require('./middlewares/limiter');
 const routes = require('./routes/index');
 const { errorHandler } = require('./middlewares/error');
@@ -26,6 +27,7 @@ app.use(helmet());
 app.use(cors());
 app.use(routes);
 app.use(errorLogger);
+app.use(errors());
 app.use(errorHandler);
 
 app.listen(PORT, () => {
